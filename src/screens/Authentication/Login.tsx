@@ -8,8 +8,11 @@ import {
 } from 'react-native';
 import React from 'react';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import HeaderLogin from '../../components/HeaderLogin';
 
-const Login = () => {
+
+const Login = ({navigation}) => {
+
   return (
     <View style={styles.container}>
       <KeyboardAwareScrollView
@@ -19,12 +22,7 @@ const Login = () => {
           // paddingHorizontal: 24,
         }}
         showsVerticalScrollIndicator={false}>
-        <Image
-          style={styles.tinyLogo}
-          source={require('../../../assets/images/logo.png')}
-        />
-
-        <Text style={{color: '#82CD47', fontSize: 25}}>Sign In</Text>
+        <HeaderLogin title="Sign In" />
 
         <View style={{}}>
           <>
@@ -33,7 +31,7 @@ const Login = () => {
           </>
           <>
             <Text>Password</Text>
-            <TextInput placeholder="Enter assword" style={styles.tipNumber} />
+            <TextInput placeholder="Enter password" style={styles.tipNumber} />
           </>
           <View>
             <TouchableOpacity>
@@ -53,7 +51,7 @@ const Login = () => {
             justifyContent: 'center',
           }}>
           <Text>Don't have an account?</Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
             <Text>Sign up</Text>
           </TouchableOpacity>
         </View>
@@ -68,10 +66,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-  },
-  tinyLogo: {
-    width: '100%',
-    height: 100,
   },
   tipNumber: {
     borderWidth: 1,
@@ -88,6 +82,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginVertical: 30,
-    alignSelf:'center'
+    alignSelf: 'center',
   },
 });
